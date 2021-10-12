@@ -9,5 +9,5 @@ import Foundation
 
 
 struct TodoViewModel {
-    private var todoItem: [String]?
+    var item: String?
 }

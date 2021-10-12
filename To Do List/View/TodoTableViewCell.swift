@@ -20,6 +20,7 @@ final class TodoTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configView()
+        configLayoutCell()
     }
 
     required init?(coder: NSCoder) {
@@ -28,28 +29,37 @@ final class TodoTableViewCell: UITableViewCell {
 
     // MARK: - view
 
-    private lazy var label: UILabel = {
+    private lazy var itemTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Teste"
+        label.numberOfLines = 0
 
         return label
     }()
+
+    private func configLayoutCell() {
+        self.accessoryType = .checkmark
+        self.tintColor = .systemGreen
+    }
+
+    func configCell(with item: String) {
+        itemTitleLabel.text = item
+    }
 }
 
 // MARK: - ViewProtocol
 
 extension TodoTableViewCell: ViewProtocol {
     func configSubview() {
-        addSubview(label)
+        addSubview(itemTitleLabel)
     }
 
     func configConstraint() {
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            label.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-            label.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            label.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16)
+            itemTitleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            itemTitleLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            itemTitleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            itemTitleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16)
         ])
     }
 }
