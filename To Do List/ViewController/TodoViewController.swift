@@ -9,10 +9,10 @@ import UIKit
 
 class TodoViewController: UIViewController {
 
-    private var todoView: TodoView?
+    private var todoView: TodoTableView?
 
     override func loadView() {
-        todoView = TodoView()
+        todoView = TodoTableView()
         view = todoView
     }
 
@@ -29,7 +29,6 @@ class TodoViewController: UIViewController {
 
     @objc private func addTappedBarButtonItem() {
         showAlert(title: "teste", message: "teste", completion: nil)
-
     }
 }
 
