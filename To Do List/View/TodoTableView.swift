@@ -10,6 +10,8 @@ import UIKit
 
 final class TodoTableView: UIView {
 
+    private let persistence = UserDefaultsPersistence()
+
     // MARK: - tableView
 
     private lazy var tableView: UITableView = {
@@ -56,7 +58,7 @@ extension TodoTableView: ViewProtocol {
 
 extension TodoTableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return persistence.items.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,6 +66,10 @@ extension TodoTableView: UITableViewDelegate, UITableViewDataSource {
                                                        for: indexPath) as? TodoTableViewCell else {
             return UITableViewCell()
         }
+
+        let item = persistence.items[indexPath.row]
+
+        cell.configCell(with: item)
 
         return cell
     }
