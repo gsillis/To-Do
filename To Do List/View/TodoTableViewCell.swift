@@ -7,11 +7,15 @@
 
 import UIKit
 
-class TodoTableViewCell: UITableViewCell {
+final class TodoTableViewCell: UITableViewCell {
+
+    // MARK: - identifier
 
     static var identifier: String {
         String(describing: TodoTableViewCell.self)
     }
+
+    // MARK: - init
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -22,6 +26,8 @@ class TodoTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - view
+
     private lazy var label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -30,6 +36,8 @@ class TodoTableViewCell: UITableViewCell {
         return label
     }()
 }
+
+// MARK: - ViewProtocol
 
 extension TodoTableViewCell: ViewProtocol {
     func configSubview() {

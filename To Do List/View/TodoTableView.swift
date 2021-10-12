@@ -8,7 +8,7 @@
 import UIKit
 
 
-final class TodoView: UIView {
+final class TodoTableView: UIView {
 
     // MARK: - tableView
 
@@ -36,25 +36,25 @@ final class TodoView: UIView {
 
 // MARK: - ViewProtocol
 
-extension TodoView: ViewProtocol {
+extension TodoTableView: ViewProtocol {
 
     func configSubview() {
         addSubview(tableView)
     }
 
     func configConstraint() {
-        NSLayoutConstraint.activate(
-            [tableView.topAnchor.constraint(equalTo: topAnchor),
-             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-             tableView.bottomAnchor.constraint(equalTo: bottomAnchor)]
-        )
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: topAnchor),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 
-extension TodoView: UITableViewDelegate, UITableViewDataSource {
+extension TodoTableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
