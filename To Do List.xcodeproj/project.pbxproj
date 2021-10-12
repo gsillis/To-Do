@@ -16,6 +16,7 @@
 		DE91C55E2715D3CF0070A433 /* TodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE91C55D2715D3CF0070A433 /* TodoView.swift */; };
 		DE91C5622715D5B30070A433 /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE91C5612715D5B30070A433 /* ViewProtocol.swift */; };
 		DE91C5642715DF690070A433 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE91C5632715DF690070A433 /* Alert.swift */; };
+		DE91C5662715EBF60070A433 /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE91C5652715EBF60070A433 /* TodoTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		DE91C55D2715D3CF0070A433 /* TodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoView.swift; sourceTree = "<group>"; };
 		DE91C5612715D5B30070A433 /* ViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
 		DE91C5632715DF690070A433 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		DE91C5652715EBF60070A433 /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				DE91C5492715D26C0070A433 /* TodoViewController.swift */,
 				DE91C55D2715D3CF0070A433 /* TodoView.swift */,
 				DE91C5632715DF690070A433 /* Alert.swift */,
+				DE91C5652715EBF60070A433 /* TodoTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 				DE91C54A2715D26C0070A433 /* TodoViewController.swift in Sources */,
 				DE91C5462715D26C0070A433 /* AppDelegate.swift in Sources */,
 				DE91C55E2715D3CF0070A433 /* TodoView.swift in Sources */,
+				DE91C5662715EBF60070A433 /* TodoTableViewCell.swift in Sources */,
 				DE91C5482715D26C0070A433 /* SceneDelegate.swift in Sources */,
 				DE91C5622715D5B30070A433 /* ViewProtocol.swift in Sources */,
 				DE91C5502715D26C0070A433 /* To_Do_List.xcdatamodeld in Sources */,
