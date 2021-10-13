@@ -10,6 +10,8 @@ import UIKit
 
 final class TodoTableView: UIView {
 
+    private let persistence = UserDefaultsPersistence()
+
     // MARK: - tableView
 
     private lazy var tableView: UITableView = {
@@ -27,10 +29,24 @@ final class TodoTableView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configView()
+        persistence.fetchItems()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func saveItem(item: String) {
+        persistence.saveNewItem(newItem: item)
+        reloadLastItem()
+
+    }
+
+    private func reloadLastItem() {
+        tableView.performBatchUpdates({
+            let row = max(tableView.numberOfRows(inSection: 0), 0)
+            tableView.insertRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
+        }, completion: nil)
     }
 }
 
@@ -56,7 +72,7 @@ extension TodoTableView: ViewProtocol {
 
 extension TodoTableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return persistence.items.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,6 +80,10 @@ extension TodoTableView: UITableViewDelegate, UITableViewDataSource {
                                                        for: indexPath) as? TodoTableViewCell else {
             return UITableViewCell()
         }
+
+        let item = persistence.items[indexPath.row]
+
+        cell.configCell(with: item)
 
         return cell
     }
