@@ -29,10 +29,24 @@ final class TodoTableView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configView()
+        persistence.fetchItems()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func saveItem(item: String) {
+        persistence.saveNewItem(newItem: item)
+        reloadLastItem()
+
+    }
+
+    private func reloadLastItem() {
+        tableView.performBatchUpdates({
+            let row = max(tableView.numberOfRows(inSection: 0), 0)
+            tableView.insertRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
+        }, completion: nil)
     }
 }
 

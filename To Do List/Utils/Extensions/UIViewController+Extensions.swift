@@ -10,21 +10,22 @@ import UIKit
 
 extension UIViewController {
 
-    func showAlert(title: String, message: String, completion:(() -> Void)? = nil) {
-        let alert: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    func showAlert(title: String, completion: @escaping(_ text: String) -> Void) {
+        let alert: UIAlertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
 
-        alert.addAction(UIAlertAction(title: "Adicionar", style: .default, handler: { _ in
-            completion?()
-        }))
-
-        alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: { _ in
-            self.dismiss(animated: true, completion: nil)
-        }))
-
-        alert.addTextField { text in
-            // implementar
+        alert.addTextField { (textfield) in
+            textfield.placeholder = "Criar nova tarefa"
         }
-        
-        self.present(alert, animated: true, completion: nil)
+
+
+        alert.addAction(UIAlertAction(title: "Criar", style: .default, handler: { _ in
+            guard let texfield = alert.textFields?[0], let text = texfield.text else { return }
+            let item = text.trimmingCharacters(in: .whitespacesAndNewlines)
+            completion(item)
+        }))
+
+        alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel))
+
+        present(alert, animated: true, completion: nil)
     }
 }
