@@ -42,8 +42,8 @@ final class TodoTableViewCell: UITableViewCell {
         self.tintColor = .systemGreen
     }
 
-    func configCell(with item: String) {
-        itemTitleLabel.text = item
+    func configCell(with item: Item) {
+        itemTitleLabel.text = item.title
     }
 }
 

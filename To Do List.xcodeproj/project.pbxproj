@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE86A862271F5F3800827B6D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE86A861271F5F3800827B6D /* Item.swift */; };
 		DE91C5462715D26C0070A433 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE91C5452715D26C0070A433 /* AppDelegate.swift */; };
 		DE91C5482715D26C0070A433 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE91C5472715D26C0070A433 /* SceneDelegate.swift */; };
 		DE91C54A2715D26C0070A433 /* TodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE91C5492715D26C0070A433 /* TodoViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DE86A861271F5F3800827B6D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		DE91C5422715D26C0070A433 /* To Do List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "To Do List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE91C5452715D26C0070A433 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE91C5472715D26C0070A433 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DE86A860271F5F2C00827B6D /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				DE86A861271F5F3800827B6D /* Item.swift */,
+			);
+			path = "Data Model";
+			sourceTree = "<group>";
+		};
 		DE91C5392715D26C0070A433 = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +78,7 @@
 		DE91C5442715D26C0070A433 /* To Do List */ = {
 			isa = PBXGroup;
 			children = (
+				DE86A860271F5F2C00827B6D /* Data Model */,
 				DE91C57027161DE30070A433 /* Utils */,
 				DE91C56D27161ADE0070A433 /* Persistence */,
 				DE91C56C2716132E0070A433 /* ViewController */,
@@ -119,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				DE91C5632715DF690070A433 /* UIViewController+Extensions.swift */,
+				DE91C57127161E0F0070A433 /* UserDefaults+Keys.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -144,7 +156,6 @@
 			children = (
 				DE91C56B271613010070A433 /* Extensions */,
 				DE91C5602715D5A70070A433 /* Protocols */,
-				DE91C57127161E0F0070A433 /* UserDefaults+Keys.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -225,6 +236,7 @@
 				DE91C5662715EBF60070A433 /* TodoTableViewCell.swift in Sources */,
 				DE91C5482715D26C0070A433 /* SceneDelegate.swift in Sources */,
 				DE91C56F27161B000070A433 /* UserDefaultsPersistence.swift in Sources */,
+				DE86A862271F5F3800827B6D /* Item.swift in Sources */,
 				DE91C5622715D5B30070A433 /* ViewProtocol.swift in Sources */,
 				DE91C5502715D26C0070A433 /* To_Do_List.xcdatamodeld in Sources */,
 				DE91C5642715DF690070A433 /* UIViewController+Extensions.swift in Sources */,

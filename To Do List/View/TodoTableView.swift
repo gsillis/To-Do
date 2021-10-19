@@ -36,7 +36,7 @@ final class TodoTableView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func saveItem(item: String) {
+    func saveItem(item: Item) {
         persistence.saveNewItem(newItem: item)
         reloadLastItem()
 

@@ -29,7 +29,8 @@ class TodoViewController: UIViewController {
 
     @objc private func addTappedBarButtonItem() {
         showAlert(title: "Adicionar nova tarefa") { [weak self] text in
-            self?.todoView?.saveItem(item: text)
+            let item = Item(title: text)
+            self?.todoView?.saveItem(item: item)
         }
     }
 }
