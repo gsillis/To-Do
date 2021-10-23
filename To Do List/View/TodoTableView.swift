@@ -10,7 +10,7 @@ import UIKit
 
 final class TodoTableView: UIView {
 
-    private let persistence = UserDefaultsPersistence()
+    private let persistence = CoreDataPersistence()
 
     // MARK: - tableView
 
@@ -38,11 +38,11 @@ final class TodoTableView: UIView {
 
     func saveItem(item: Item) {
         persistence.saveNewItem(newItem: item)
-        reloadLastItem()
+        reloadLastItemAdded()
 
     }
 
-    private func reloadLastItem() {
+    private func reloadLastItemAdded() {
         tableView.performBatchUpdates({
             let row = max(tableView.numberOfRows(inSection: 0), 0)
             tableView.insertRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
@@ -90,5 +90,11 @@ extension TodoTableView: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        persistence.toggleItem(index: indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.reloadData()
     }
 }

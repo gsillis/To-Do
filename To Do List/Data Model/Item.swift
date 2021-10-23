@@ -7,12 +7,18 @@
 
 import Foundation
 
-class Item: Codable {
-    var title: String
-    var done: Bool
+/* classe criada para estudar persistencia de dados
+ usando user defaults
 
-    init(title: String, done: Bool = false) {
-        self.title = title
-        self.done = done 
-    }
-}
+ User Defalts é uma layer de persistencia de dados, geralmente utilizado
+ para salvar pouca quantidade de dados */
+
+//class Item: Codable {
+//    var title: String
+//    var done: Bool
+//
+//    init(title: String, done: Bool = false) {
+//        self.title = title
+//        self.done = done
+//    }
+//}

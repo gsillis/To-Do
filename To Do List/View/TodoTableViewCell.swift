@@ -38,12 +38,12 @@ final class TodoTableViewCell: UITableViewCell {
     }()
 
     private func configLayoutCell() {
-        self.accessoryType = .checkmark
-        self.tintColor = .systemGreen
+        tintColor = .systemGreen
     }
 
     func configCell(with item: Item) {
         itemTitleLabel.text = item.title
+        accessoryType = item.done ? .checkmark : .none
     }
 }
 
