@@ -43,6 +43,12 @@ class CoreDataPersistence {
         save()
     }
 
+    func deleteItem(index: Int) {
+        CoreDataPersistence.context.delete(items[index])
+        items.remove(at: index)
+        save()
+    }
+
     private func save() {
         CoreDataPersistence.appDelegate.saveContext()
     }

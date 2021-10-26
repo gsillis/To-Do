@@ -20,8 +20,17 @@ final class TodoTableView: UIView {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(TodoTableViewCell.self, forCellReuseIdentifier: TodoTableViewCell.identifier)
+        tableView.tableHeaderView = searchBar
 
         return tableView
+    }()
+
+    private lazy var searchBar: SearchBar = {
+        let searchBar = SearchBar()
+        searchBar.frame = CGRect(x: 0, y: 0, width: 200, height: 70)
+
+
+        return searchBar
     }()
 
     // MARK: - init
@@ -39,7 +48,6 @@ final class TodoTableView: UIView {
     func saveItem(item: Item) {
         persistence.saveNewItem(newItem: item)
         reloadLastItemAdded()
-
     }
 
     private func reloadLastItemAdded() {
@@ -96,5 +104,22 @@ extension TodoTableView: UITableViewDelegate, UITableViewDataSource {
         persistence.toggleItem(index: indexPath.row)
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadData()
+    }
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+
+        /*metodo com mais opções para personalizar o swipe de remove*/
+
+        let deleteAction = UIContextualAction(style: .destructive, title: nil) { _, _, completionHandler in
+            self.persistence.deleteItem(index: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            completionHandler(true)
+        }
+        deleteAction.image = UIImage(systemName: "trash")
+
+        /*recebe um array de actions*/
+        let configure = UISwipeActionsConfiguration(actions: [deleteAction])
+
+        return configure
     }
 }
