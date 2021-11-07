@@ -39,6 +39,7 @@ final class TodoTableView: UIView {
         super.init(frame: frame)
         configView()
         persistence.fetchItems()
+        searchBar.delegate(delegate: self)
     }
 
     required init?(coder: NSCoder) {
@@ -121,5 +122,34 @@ extension TodoTableView: UITableViewDelegate, UITableViewDataSource {
         let configure = UISwipeActionsConfiguration(actions: [deleteAction])
 
         return configure
+    }
+}
+
+// MARK: - UISearchBarDelegate
+
+extension TodoTableView: UISearchBarDelegate {
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard
+            let text = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+            !text.isEmpty else {
+                return
+            }
+
+        persistence.searchBy(text: text)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard (searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true) else {
+            return
+        }
+        persistence.fetchItems()
+
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }

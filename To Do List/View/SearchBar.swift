@@ -9,11 +9,11 @@ import UIKit
 
 final class SearchBar: UIView {
 
+    private let persistence = CoreDataPersistence()
+
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
-        searchBar.delegate = self
         searchBar.searchBarStyle = .default
-        searchBar.showsCancelButton = true
         searchBar.placeholder = "Buscar"
         searchBar.sizeToFit()
 
@@ -29,10 +29,8 @@ final class SearchBar: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
 
-// MARK: - UISearchBarDelegate
-
-extension SearchBar: UISearchBarDelegate {
-
+    func delegate(delegate: UISearchBarDelegate) {
+        searchBar.delegate = delegate
+    }
 }
