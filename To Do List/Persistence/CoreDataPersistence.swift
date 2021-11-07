@@ -23,9 +23,7 @@ class CoreDataPersistence {
         return CoreDataPersistence.appDelegate.persistentContainer.viewContext
     }
 
-    func fetchItems() {
-        let request: NSFetchRequest<Item> = Item.fetchRequest()
-
+    func fetchItems(with request: NSFetchRequest<Item> = Item.fetchRequest()) {
         do {
             items = try CoreDataPersistence.context.fetch(request)
         } catch  {
@@ -41,6 +39,19 @@ class CoreDataPersistence {
     func toggleItem(index: Int) {
         items[index].done.toggle()
         save()
+    }
+
+    func deleteItem(index: Int) {
+        CoreDataPersistence.context.delete(items[index])
+        items.remove(at: index)
+        save()
+    }
+
+    func searchBy(text: String) {
+        let request: NSFetchRequest<Item> = Item.fetchRequest()
+        request.predicate = NSPredicate(format: "title contains[c] %@", text)
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        fetchItems(with: request)
     }
 
     private func save() {
