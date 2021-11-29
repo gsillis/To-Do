@@ -13,5 +13,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      - name: Change permissions
+        run: chmod +x ./.github/scripts/test.sh
       - name: Testing iOS app
         run: exec ./.github/scripts/test.sh
